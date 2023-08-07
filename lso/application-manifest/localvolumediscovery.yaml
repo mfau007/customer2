@@ -1,0 +1,12 @@
+apiVersion: local.storage.openshift.io/v1alpha1
+kind: LocalVolumeDiscovery
+metadata:
+#  name: discover-all-devices "Error using john's parameter " The LocalVolumeDiscovery "discover-all-devices" is invalid: metadata.name: Unsupported value: "discover-all-devices": supported values: "auto-discover-devices"
+  name: auto-discover-devices
+  namespace: openshift-local-storage
+spec:
+  nodeSelector:
+    nodeSelectorTerms:
+      - matchExpressions:
+        - key: cluster.ocs.openshift.io/openshift-storage
+          operator: Exists

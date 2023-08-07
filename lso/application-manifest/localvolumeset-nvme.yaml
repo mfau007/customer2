@@ -1,0 +1,20 @@
+---
+apiVersion: local.storage.openshift.io/v1alpha1
+kind: LocalVolumeSet
+metadata:
+  name: local-nvme
+  namespace: openshift-local-storage
+spec:
+  deviceInclusionSpec:
+    deviceMechanicalProperties:
+    - NonRotational
+    deviceTypes:
+    - disk
+    minSize: 200Gi ###I need this because my servers have two 120GB SSD for the Operat
+  nodeSelector:
+    nodeSelectorTerms:
+      - matchExpressions:
+        - key: cluster.ocs.openshift.io/openshift-storage
+          operator: Exists
+  storageClassName: local-nvme
+  volumeMode: Block

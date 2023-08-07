@@ -1,0 +1,50 @@
+---
+apiVersion: ocs.openshift.io/v1
+kind: StorageCluster
+metadata:
+  name: ocs-storagecluster
+  namespace: openshift-storage
+spec:
+# encryption:
+# clusterWide: true ### this will use cryptsetup/LUKS for at-rest encryption
+  flexibleScaling: true ### allow scaling by node/host instead of by "rack" or by "zone"
+  monDataDirHostPath: /var/lib/rook
+  #network:
+  #provider: multus
+  #selectors:
+  #public: openshift-storage/ocs-public
+  #cluster: openshift-storage/ocs-cluster
+  storageDeviceSets:
+  - name: nvme
+    count: 3
+    replica: 1
+    deviceType: nvme
+    dataPVCTemplate:
+      spec:
+        storageClassName: local-nvme
+        accessModes:
+        - ReadWriteOnce
+        volumeMode: Block
+        resources:
+          requests:
+            storage: 1
+  - name: hdd
+    count: 3
+    replica: 1
+    deviceType: hdd
+    dataPVCTemplate:
+      spec:
+        storageClassName: local-hdd
+        accessModes:
+        - ReadWriteOnce
+        volumeMode: Block
+        resources:
+          requests:
+            storage: 1
+  managedResources:
+    cephBlockPools:
+      reconcileStrategy: ignore ###don't create the default CephBlockPool nor the RBD S
+# cephFilesystems:
+# reconcileStrategy: ignore ###don't create the default CephFilesystem nor the Cep
+  multiCloudGateway:
+    dbStorageClassName: ocs-storagecluster-ceph-rbd-nvme

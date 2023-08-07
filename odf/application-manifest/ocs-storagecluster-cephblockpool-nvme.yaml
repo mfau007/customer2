@@ -1,0 +1,19 @@
+apiVersion: ceph.rook.io/v1
+kind: CephBlockPool
+metadata:
+  name: ocs-storagecluster-cephblockpool-nvme
+  namespace: openshift-storage
+spec:
+  compressionMode: none
+  deviceClass: nvme
+  erasureCoded:
+    codingChunks: 0
+    dataChunks: 0
+  failureDomain: host
+  mirroring: {}
+  parameters:
+    compression_mode: none
+  quotas: {}
+  replicated:
+    size: 3
+    targetSizeRatio: 0.49
