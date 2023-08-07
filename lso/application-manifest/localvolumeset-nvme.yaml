@@ -4,6 +4,8 @@ kind: LocalVolumeSet
 metadata:
   name: local-nvme
   namespace: openshift-local-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   deviceInclusionSpec:
     deviceMechanicalProperties:

@@ -4,6 +4,8 @@ kind: LocalVolumeSet
 metadata:
   name: local-hdd
   namespace: openshift-local-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "6"
 spec:
   deviceInclusionSpec:
     deviceMechanicalProperties:
