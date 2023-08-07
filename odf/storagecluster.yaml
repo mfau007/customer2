@@ -4,6 +4,8 @@ kind: StorageCluster
 metadata:
   name: ocs-storagecluster
   namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "4"
 spec:
 # encryption:
 # clusterWide: true ### this will use cryptsetup/LUKS for at-rest encryption

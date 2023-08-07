@@ -3,6 +3,8 @@ kind: CephBlockPool
 metadata:
   name: ocs-storagecluster-cephblockpool-hdd
   namespace: openshift-storage
+  annotations:
+    argocd.argoproj.io/sync-wave: "7"
 spec:
   compressionMode: none
   deviceClass: hdd
