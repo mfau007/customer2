@@ -4,7 +4,7 @@ kind: StorageClass
 metadata:
   name: ocs-storagecluster-ceph-rbd-nvme
   annotations:
-    argocd.argoproj.io/sync-wave: "6"
+    argocd.argoproj.io/sync-wave: "7"
 parameters:
   clusterID: openshift-storage
   csi.storage.k8s.io/controller-expand-secret-name: rook-csi-rbd-provisioner
