@@ -5,17 +5,17 @@ metadata:
   name: ocs-storagecluster
   namespace: openshift-storage
   annotations:
-    argocd.argoproj.io/sync-wave: "4"
+    argocd.argoproj.io/sync-wave: "6"
 spec:
 # encryption:
 # clusterWide: true ### this will use cryptsetup/LUKS for at-rest encryption
   flexibleScaling: true ### allow scaling by node/host instead of by "rack" or by "zone"
   monDataDirHostPath: /var/lib/rook
-  #network:
-  #provider: multus
-  #selectors:
-  #public: openshift-storage/ocs-public
-  #cluster: openshift-storage/ocs-cluster
+  network:
+  provider: multus
+  selectors:
+  public: openshift-storage/ocs-public
+  cluster: openshift-storage/ocs-cluster
   storageDeviceSets:
     - config: {}
       count: 3
