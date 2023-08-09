@@ -12,10 +12,11 @@ spec:
   flexibleScaling: true ### allow scaling by node/host instead of by "rack" or by "zone"
   monDataDirHostPath: /var/lib/rook
   network:
-  provider: multus
-  selectors:
-  public: openshift-storage/ocs-public
-  cluster: openshift-storage/ocs-cluster
+  ipFamily: IPv4
+    provider: multus
+    selectors:
+      public: openshift-storage/ocs-public
+      cluster: openshift-storage/ocs-cluster
   storageDeviceSets:
     - config: {}
       count: 3
