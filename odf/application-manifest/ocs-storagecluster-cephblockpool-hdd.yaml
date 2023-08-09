@@ -5,6 +5,7 @@ metadata:
   namespace: openshift-storage
   annotations:
     argocd.argoproj.io/sync-wave: "8"
+    storageclass.kubernetes.io/is-default-class: "true"
 spec:
   compressionMode: none
   deviceClass: hdd
