@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: lso/application-manifest
+    path: lso2/application-manifest
     repoURL: https://github.com/mfau007/customer2
     targetRevision: main
   syncPolicy:
